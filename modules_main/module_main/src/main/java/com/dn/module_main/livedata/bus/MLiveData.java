@@ -11,9 +11,10 @@ import zee.library.utils.Log;
 
 public class MLiveData<T> extends LiveData<T> {
 
-    private boolean hasModified = false;
 
-    private Handler handler;
+   private boolean hasModified = false;
+
+   private Handler handler;
 
     // 只有onStart后，对数据的修改才会触发 observer.onChanged()
     @Override
@@ -54,7 +55,7 @@ public class MLiveData<T> extends LiveData<T> {
     public void setValue(T value) {
         super.setValue(value);
         hasModified = true;
-        Log.i("hasModified=" + hasModified);
+        Log.i("setValue: hasModified=" + hasModified);
     }
 
     /**
@@ -81,5 +82,4 @@ public class MLiveData<T> extends LiveData<T> {
         // hasModified = true;
         Log.i("hasModified=" + hasModified);
     }
-
 }

@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class LiveDataBus {
 
-    private static LiveDataBus instance;
+    private static volatile LiveDataBus instance;
 
     private Map<String, MLiveData> bus;
 
@@ -26,10 +26,9 @@ public class LiveDataBus {
 
     public synchronized <T> MLiveData<T> with(String key, Class<T> type) {
         if (!bus.containsKey(key)) {
-            bus.put(key, new MLiveData<>());
+            bus.put(key, new MLiveData());
         }
         // 如果不需要阻止黏性事件，则换回MutableLiveData
         return (MLiveData<T>) bus.get(key);
     }
-
 }

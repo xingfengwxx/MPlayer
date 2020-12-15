@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
 
 import java.util.List;
 
@@ -15,58 +16,57 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerAdapter.ViewHolder> {
 
-    private Context context;
-    private LayoutInflater inflater;
-    private List<T> dataList;
+    private Context mContext;
+    private LayoutInflater mLayoutInflater;
+    private List<T> mList;
     private int varId;
-    private OnItemClickListener onItemClickListener;
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }
+    private OnItemClickListener mOnItemClickListener;
 
     @IdRes
     private int layoutId;
 
-    public void setNewData(List<T> dataList) {
-        this.dataList = dataList;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    public void setNewData(List<T> data) {
+        this.mList = data;
         notifyDataSetChanged();
     }
 
     public T getItem(int position) {
-        if (position < dataList.size()) {
-            return dataList.get(position);
+        if (position < mList.size()) {
+            return mList.get(position);
         }
         return null;
     }
 
     public BaseRecyclerAdapter(Context context, @IdRes int layoutId, int varId) {
-        this.context = context;
+        mContext = context;
         this.layoutId = layoutId;
         this.varId = varId;
-        inflater = LayoutInflater.from(context);
+        mLayoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ViewDataBinding binding = DataBindingUtil.inflate(inflater, layoutId, parent, false);
+        ViewDataBinding binding = DataBindingUtil.inflate(mLayoutInflater, layoutId, parent, false);
         return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(v, position);
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(v, position);
                 }
             }
         });
 
-        Object object = dataList.get(position);
+        Object object = mList.get(position);
         ViewDataBinding binding = holder.getBinding();
         binding.setVariable(varId, object);
         binding.executePendingBindings();
@@ -74,15 +74,17 @@ public class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerAda
 
     @Override
     public int getItemCount() {
-        if (dataList == null) return 0;
-        return dataList.size();
+        if (mList == null) {
+            return 0;
+        }
+        return mList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         private ViewDataBinding binding;
 
-        ViewHolder(ViewDataBinding binding) {
+        public ViewHolder(ViewDataBinding binding) {
             super(binding.getRoot().getRootView());
             this.binding = binding;
         }
