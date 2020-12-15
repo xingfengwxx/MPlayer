@@ -1,0 +1,35 @@
+ext {
+
+    // 定义一些变量，该变量可以被其它gradle文件使用
+
+    // 是否开发模式：true-开发模式下每个模块单独运行调试(application)
+    isDebug = false
+
+    android = [
+            compileSdkVersion: 29,
+            minSdkVersion    : 28,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    applicationId = [
+            "app"        : "com.wangxingxing.mplayer",
+            "module_main": "com.wangxingxing.moudule_main"]
+
+    androidx = [
+            "appcompat"       : "androidx.appcompat:appcompat:1.2.0",
+            "fragment"        : "androidx.fragment:fragment:1.2.5",
+            "recyclerview"    : "androidx.recyclerview:recyclerview:1.1.0",
+            "annotation"      : "androidx.annotation:annotation:1.1.0",
+            "material"        : "com.google.android.material:material:1.1.0",
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.0.4"]
+
+    library = [
+            "RecyclerAdatperHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.49-androidx",
+            "OkHttp3"              : "com.squareup.okhttp3:okhttp:3.14.+",
+            "HttpLogging"          : "com.squareup.okhttp3:logging-interceptor:3.14.+",
+            "Retrofit2"            : "com.squareup.retrofit2:retrofit:2.9.0",
+            "Retrofit2Gson"        : "com.squareup.retrofit2:converter-gson:2.9.0",
+            "Retrofit2Scalars"     : "com.squareup.retrofit2:converter-scalars:2.9.0"]
+}

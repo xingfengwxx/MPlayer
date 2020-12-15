@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+def cfg = rootProject.ext
+
+android {
+    compileSdkVersion cfg.android.compileSdkVersion
+
+    defaultConfig {
+        applicationId cfg.applicationId['app']
+        minSdkVersion cfg.android.minSdkVersion
+        targetSdkVersion cfg.android.targetSdkVersion
+        versionCode cfg.android.versionCode
+        versionName cfg.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        // 在开发模式下 使用不同的代码
+        if (isDebug) {
+            main.java.srcDirs = ['src/main/debug/java']
+        }
+    }
+
+    dataBinding{
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    annotationProcessor project(':router_compiler')
+    implementation project(':module_domain')
+    implementation project(':lib_common')
+
+    if (!isDebug) {
+        implementation project(':module_main')
+        implementation project(':module_login')
+    }
+
+}

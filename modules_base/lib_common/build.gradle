@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+def cfg = rootProject.ext
+
+android {
+    compileSdkVersion cfg.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion cfg.android.minSdkVersion
+        targetSdkVersion cfg.android.targetSdkVersion
+        versionCode cfg.android.versionCode
+        versionName cfg.android.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api cfg.androidx['appcompat']
+    api cfg.androidx['fragment']
+    api cfg.androidx['recyclerview']
+    api cfg.androidx['annotation']
+    api cfg.androidx['material']
+    api cfg.androidx['constraintlayout']
+
+    api cfg.library['RecyclerAdatperHelper']
+    api cfg.library['OkHttp3']
+    api cfg.library['HttpLogging']
+    api cfg.library['Retrofit2']
+    api cfg.library['Retrofit2Gson']
+    api cfg.library['Retrofit2Scalars']
+
+    api project(':lib_mglide')
+    api project(':lib_arouter')
+    api project(':lib_utils')
+    api project(':lib_skinsupport')
+    api project(':lib_lmbanners')
+}
