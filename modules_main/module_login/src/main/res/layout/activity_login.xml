@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-
-        <variable
-            name="user"
-            type="com.dn.module_login.UserInfo" />
-
-        <variable
-            name="activity"
-            type="com.dn.module_login.LoginActivity" />
-    </data>
 
     <ScrollView
         style="@style/MainScrollView"
@@ -61,7 +51,6 @@
                         android:maxLength="11"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:text="@={user.mobile}"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -95,7 +84,6 @@
                         android:maxLength="20"
                         android:paddingLeft="12.5dp"
                         android:paddingRight="15dp"
-                        android:text="@={user.pwd}"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -142,7 +130,6 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/bg_circle"
-                    android:onClick="@{activity.onClick}"
                     android:src="@mipmap/ic_login_next" />
 
                 <View

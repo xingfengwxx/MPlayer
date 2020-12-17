@@ -1,12 +1,11 @@
 include ':app', ':module_main'
-include ':module_domain', ':module_login'
+include ':module_login'
 include ':lib_common', ':lib_utils', ':lib_mglide', ':lib_orm', ':lib_skinsupport', ':lib_lmbanners',
         ':lib_arouter', ':router_annotation', ':router_compiler'
 
 // 因为给各个Module规划到了一个文件夹下，所以要重新指定下模块对应的文件路径
 project(':module_main').projectDir = new File('modules_main/module_main')
 project(':module_login').projectDir = new File('modules_main/module_login')
-project(':module_domain').projectDir = new File('modules_core/module_domain')
 project(':lib_common').projectDir = new File('modules_base/lib_common')
 project(':lib_utils').projectDir = new File('modules_base/lib_utils')
 project(':lib_orm').projectDir = new File('modules_base/lib_orm')

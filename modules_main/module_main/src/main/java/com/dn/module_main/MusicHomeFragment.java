@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 
 import com.allure.lbanners.LMBanners;
-import com.dn.domain.Music;
+import com.dn.module_main.bean.Music;
 import com.dn.module_main.databinding.BaseRecyclerAdapter;
 import com.dn.module_main.livedata.MusicViewModel;
 import com.dn.module_main.livedata.bus.LiveDataBus;

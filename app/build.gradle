@@ -15,7 +15,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
 
@@ -42,13 +42,16 @@ android {
     dataBinding{
         enabled = true
     }
+
+    viewBinding{
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    annotationProcessor project(':router_compiler')
-    implementation project(':module_domain')
+    annotationProcessor cfg.arouter['compiler']
     implementation project(':lib_common')
 
     if (!isDebug) {

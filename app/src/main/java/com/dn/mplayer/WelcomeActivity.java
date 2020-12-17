@@ -5,10 +5,11 @@ import android.os.Handler;
 import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
-import zee.library.arouter.DNRouter;
-import zee.library.router_annotation.Router;
 
-@Router(path = "/app/WelcomeActivity")
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+
+@Route(path = "/app/WelcomeActivity")
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
@@ -26,7 +27,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void skip() {
-        DNRouter.getInstance().build("/login/LoginActivity").navigation(this);
+        ARouter.getInstance().build("/login/LoginActivity").navigation();
+//        DNRouter.getInstance().build("/login/LoginActivity").navigation(this);
         //DNRouter.getInstance().build("/main/MainActivity").navigation(this);
         finish();
         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);

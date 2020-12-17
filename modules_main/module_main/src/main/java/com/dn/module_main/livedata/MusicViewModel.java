@@ -1,13 +1,14 @@
 package com.dn.module_main.livedata;
 
-import com.dn.domain.Music;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import zee.library.orm.DBManager;
+
+import com.dn.module_main.bean.Music;
+
 
 /**
  * 处理数据的变化跟视图

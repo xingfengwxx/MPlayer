@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.dn.domain.Music;
+import com.dn.module_main.bean.Music;
 
 import java.util.ArrayList;
 

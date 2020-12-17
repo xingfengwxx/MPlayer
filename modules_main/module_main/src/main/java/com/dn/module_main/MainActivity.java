@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.dn.module_main.livedata.bus.LiveDataBus;
 
 import java.util.ArrayList;
@@ -18,11 +19,10 @@ import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
 import zee.library.common.base.BasePagerAdapter;
 import zee.library.common.widget.PlayButtonView;
-import zee.library.router_annotation.Router;
 import zee.library.utils.DisplayUtils;
 import zee.library.utils.UIHelper;
 
-@Router(path = "/main/MainActivity")
+@Route(path = "/main/MainActivity")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private PlayButtonView playButtonView;

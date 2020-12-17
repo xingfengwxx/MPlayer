@@ -20,7 +20,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
 
@@ -52,7 +52,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor project(':router_compiler')
+    annotationProcessor cfg.arouter['compiler']
     implementation project(':lib_common')
-    implementation project(':module_domain')
 }

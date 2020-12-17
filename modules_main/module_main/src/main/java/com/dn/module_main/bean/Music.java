@@ -1,21 +1,10 @@
-package com.dn.domain;
+package com.dn.module_main.bean;
 
-import zee.library.orm.annotation.DbField;
-import zee.library.orm.annotation.DbTable;
-
-@DbTable("tb_music")
 public class Music {
 
-    @DbField("musicName")
     String musicName;
-
-    @DbField("singerName")
     String singerName;
-
-    @DbField("url")
     String url;
-
-    @DbField("img")
     String img;
 
     /**
@@ -23,6 +12,11 @@ public class Music {
      * 否则没法动态创建对象设置属性值
      */
     public Music() {
+    }
+
+    public Music(String musicName, String singerName) {
+        this.musicName = musicName;
+        this.singerName = singerName;
     }
 
     public Music(String musicName, String singerName, String img) {
@@ -72,4 +66,5 @@ public class Music {
                 ", img='" + img + '\'' +
                 '}';
     }
+
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="music"
-            type="com.dn.domain.Music" />
+            type="com.dn.module_main.bean.Music" />
 
         <variable
             name="loader"

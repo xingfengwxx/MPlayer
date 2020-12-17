@@ -36,8 +36,11 @@ dependencies {
     api cfg.library['Retrofit2Gson']
     api cfg.library['Retrofit2Scalars']
 
+    api cfg.glide['library']
+    api cfg.arouter['library']
+
     api project(':lib_mglide')
-    api project(':lib_arouter')
+//    api project(':lib_arouter')
     api project(':lib_utils')
     api project(':lib_skinsupport')
     api project(':lib_lmbanners')
